@@ -6,17 +6,17 @@ import {
 
 const initialState = {
     postUserLoading: false,
-    postUser: [],
+    postUser: null,
     error: null
 };
 
-export const commentsReducer = (state = initialState, action) => {
+export const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_POST_USER_REQUESTED:
             return {
                 ...state,
                 postUserLoading: true,
-                postUser: [],
+                postUser: null,
                 error: null
             };
         
@@ -32,7 +32,7 @@ export const commentsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 postUserLoading: false,
-                postUser: [],
+                postUser: null,
                 error: action.payload
             };
     
