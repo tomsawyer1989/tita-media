@@ -9,4 +9,4 @@ export const fetchCommentsByPost = async (id) => {
         console.log(err);
         throw err;
     }
-};
+}

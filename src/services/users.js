@@ -1,12 +1,12 @@
 import { optionsGET } from './config/options';
-import { getUser } from './config/endpoints';
+import { getPostUser } from './config/endpoints';
 
-export const fetchUser = async (id) => {
+export const fetchPostUser = async (id) => {
     try {
-        const response = await fetch(getUser(id), optionsGET());
+        const response = await fetch(getPostUser(id), optionsGET());
         return response.json();
     } catch (err) {
         console.log(err);
         throw err;
     }
-};
+}

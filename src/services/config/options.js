@@ -4,8 +4,8 @@ const headers = jwt => {
         'Content-Type': 'application/json',
         Authorization: jwt ? `Bearer ${session.jwt}` : null,
         'app-id': '6301b76bbfc6129df3304440'
-    };
-};
+    }
+}
 
 export const optionsGET = (jwt = false) => ({
     method: 'GET',

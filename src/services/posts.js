@@ -9,7 +9,7 @@ export const fetchPosts = async () => {
         console.log(err);
         throw err;
     }
-};
+}
 
 export const fetchPostByTag = async (id) => {
     try {
@@ -19,4 +19,4 @@ export const fetchPostByTag = async (id) => {
         console.log(err);
         throw err;
     }
-};
+}
