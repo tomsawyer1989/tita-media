@@ -9,10 +9,10 @@ import {
 
 const initialState = {
     postsLoading: false,
-    posts: [],
+    posts: null,
     error: null,
     postByTagLoading: false,
-    postByTag: [],
+    postByTag: null,
     postByTagError: null
 };
 
@@ -22,7 +22,7 @@ export const postsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 postsLoading: true,
-                posts: [],
+                posts: null,
                 error: null
             };
         
@@ -38,7 +38,7 @@ export const postsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 postsLoading: false,
-                posts: [],
+                posts: null,
                 error: action.payload
             };
 
@@ -46,7 +46,7 @@ export const postsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 postByTagLoading: true,
-                postByTag: [],
+                postByTag: null,
                 postByTagError: null
             };
         
@@ -62,7 +62,7 @@ export const postsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 postByTagLoading: false,
-                postByTag: [],
+                postByTag: null,
                 postByTagError: action.payload
             };
         

@@ -6,7 +6,7 @@ import {
 
 const initialState = {
     commentsLoading: false,
-    comments: [],
+    comments: null,
     error: null
 };
 
@@ -16,7 +16,7 @@ export const commentsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 commentsLoading: true,
-                comments: [],
+                comments: null,
                 error: null
             };
         
@@ -32,7 +32,7 @@ export const commentsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 commentsLoading: false,
-                comments: [],
+                comments: null,
                 error: action.payload
             };
     
