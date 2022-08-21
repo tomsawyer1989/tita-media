@@ -5,7 +5,7 @@ import {
     GET_POST_BY_TAG_REQUESTED,
     GET_POST_BY_TAG_SUCCESS,
     GET_POST_BY_TAG_ERROR
-} from "./actionTypes";
+} from "../actions/actionTypes";
 
 const initialState = {
     postsLoading: false,

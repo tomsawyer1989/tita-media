@@ -2,7 +2,7 @@ import {
     GET_POST_USER_REQUESTED,
     GET_POST_USER_SUCCESS,
     GET_POST_USER_ERROR
-} from "./actionTypes";
+} from "../actions/actionTypes";
 
 const initialState = {
     postUserLoading: false,

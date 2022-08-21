@@ -2,7 +2,7 @@ import {
     GET_COMMENTS_BY_POST_REQUESTED,
     GET_COMMENTS_BY_POST_SUCCESS,
     GET_COMMENTS_BY_POST_ERROR
-} from "./actionTypes";
+} from "../actions/actionTypes";
 
 const initialState = {
     commentsLoading: false,
