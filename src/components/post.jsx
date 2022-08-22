@@ -73,11 +73,7 @@ function Post({ item, getPostUser, getCommentsByPost }) {
         {owner && <Modal show={ showOwner } onClose={() => setShowOwner(false)} title={ title }>
             <div style={ styles.ownerContainer }>
                 <div>
-                    <img
-                        style={ styles.ownerPicture }
-                        src={ owner.picture }
-                        alt="owner picture"
-                    />
+                    <img style={ styles.ownerPicture } src={ owner.picture } alt="owner picture"/>
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
                         <ul style={{ padding: '0px', margin: '0px' }}>
                             <li style={{ listStyleType: 'none' }}>{ owner.email }</li>
@@ -100,11 +96,19 @@ function Post({ item, getPostUser, getCommentsByPost }) {
                 </div>
             </div>
         </Modal>}
-        <Modal show={ showComments } onClose={() => setShowComments(false)} title={ title }>
-            <div>
-                <p>Hi comments</p>
-            </div>
-        </Modal>
+        {comments && <Modal show={ showComments } onClose={() => setShowComments(false)} title={ title }>
+            {comments.data.map(item => (
+                <div key={ item.id } style={ styles.commentsContainer }>
+                    <img style={ styles.commentsPicture } src={ item.owner.picture } alt="owner picture"/>
+                    <div style={ styles.commentsMessage }>
+                        <strong>{ item.owner.firstName } { item.owner.lastName }</strong>
+                        <div>
+                            { item.message }
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </Modal>}
         </>
     );
 }
@@ -126,8 +130,8 @@ const styles = {
     },
     headerPicture: {
         cursor: 'pointer',
-        width: '50px',
-        height: '50px',
+        width: '55px',
+        height: '55px',
         marginRight: '15px',
         borderRadius: '50px'
     },
@@ -148,6 +152,21 @@ const styles = {
         width: '230px',
         height: '230px',
         borderRadius: '120px'
+    },
+    commentsContainer: {
+        display: 'flex',
+        paddingTop: '20px'
+    },
+    commentsPicture: {
+        width: '40px',
+        height: '40px',
+        marginRight: '10px',
+        borderRadius: '50px'
+    },
+    commentsMessage: {
+        padding: '7px',
+        borderRadius: '15px',
+        backgroundColor: '#444950'
     }
 }
 
