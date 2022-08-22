@@ -57,6 +57,13 @@ function Post({ item, getPostUser, getCommentsByPost }) {
             <div>
                 <p>{ item.text }</p>
             </div>
+            <div style={ styles.tagsContainer }>
+                {item.tags.map((item, i)=> (
+                    <div key={ i } style={ styles.tagsMessage }>
+                        <small>{ item }</small>
+                    </div>
+                ))}
+            </div>
             <img style={ styles.image } src={ item.image } alt="image"/>
             <div style={ styles.bottom }>
                 <span>{ item.likes } likes</span>
@@ -115,7 +122,7 @@ function Post({ item, getPostUser, getCommentsByPost }) {
 
 const styles = {
     container: {
-        height: '420px',
+        height: '470px',
         width: '500px',
         padding: '15px',
         marginTop: '20px',
@@ -134,6 +141,16 @@ const styles = {
         height: '55px',
         marginRight: '15px',
         borderRadius: '50px'
+    },
+    tagsContainer: {
+        display: 'flex',
+        marginBottom: '15px'
+    },
+    tagsMessage: {
+        padding: '4px',
+        marginRight: '7px',
+        borderRadius: '10px',
+        backgroundColor: '#444950'
     },
     image: {
         width: '100%',
