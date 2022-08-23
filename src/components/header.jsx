@@ -5,7 +5,7 @@ function Header({ user }) {
     return (
         <div style={ styles.container }>
             <div style={ styles.userContainer }>
-                <img style={ styles.userImage } src={ user.picture.data.url } alt="image"/>
+                <img style={ styles.userImage } src={ user.picture.data.url } alt="user"/>
                 <div style={ styles.userInfo }>
                     <div><strong>{ user.name }</strong></div>
                     <div style={{ textAlign: 'center' }}><small>{ user.email }</small></div>

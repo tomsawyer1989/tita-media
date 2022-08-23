@@ -42,7 +42,7 @@ function Post({ item, getPostUser, getCommentsByPost }) {
                 <img
                     style={ styles.headerPicture }
                     src={ item.owner.picture }
-                    alt="header picture"
+                    alt="header"
                     onClick={() => toggleModalOwner()}
                 />
                 <strong
@@ -64,7 +64,7 @@ function Post({ item, getPostUser, getCommentsByPost }) {
                     </div>
                 ))}
             </div>
-            <img style={ styles.image } src={ item.image } alt="image"/>
+            <img style={ styles.image } src={ item.image } alt="post"/>
             <div style={ styles.bottom }>
                 <span>{ item.likes } likes</span>
                 <span
@@ -80,7 +80,7 @@ function Post({ item, getPostUser, getCommentsByPost }) {
         {owner && <Modal show={ showOwner } onClose={() => setShowOwner(false)} title={ title }>
             <div style={ styles.ownerContainer }>
                 <div>
-                    <img style={ styles.ownerPicture } src={ owner.picture } alt="owner picture"/>
+                    <img style={ styles.ownerPicture } src={ owner.picture } alt="owner"/>
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
                         <ul style={{ padding: '0px', margin: '0px' }}>
                             <li style={{ listStyleType: 'none' }}>{ owner.email }</li>
@@ -106,7 +106,7 @@ function Post({ item, getPostUser, getCommentsByPost }) {
         {comments && <Modal show={ showComments } onClose={() => setShowComments(false)} title={ title }>
             {comments.data.map(item => (
                 <div key={ item.id } style={ styles.commentsContainer }>
-                    <img style={ styles.commentsPicture } src={ item.owner.picture } alt="owner picture"/>
+                    <img style={ styles.commentsPicture } src={ item.owner.picture } alt="owner"/>
                     <div style={ styles.commentsMessage }>
                         <strong>{ item.owner.firstName } { item.owner.lastName }</strong>
                         <div>
