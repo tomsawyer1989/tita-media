@@ -17,6 +17,7 @@ function App({ login }) {
   return (
     <BrowserRouter>
       <Routes>
+        <Route index element={<LoginPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route
           path="/home"
