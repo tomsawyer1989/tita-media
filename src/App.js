@@ -1,17 +1,38 @@
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import Login from "./pages/login";
+import Home from './pages/home';
 
-import Main from './components/main';
-import store from './store';
+function RequireAuth({ children, login }) {
+  let location = useLocation();
 
-function App() {
+  if (!login) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+
+  return children;
+}
+
+function App({ login }) {
   return (
-    <Provider store={ store }>
-      <BrowserRouter>
-        <Main/>
-      </BrowserRouter>
-    </Provider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/home"
+          element={
+            <RequireAuth login={ login }>
+              <Home />
+            </RequireAuth>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
-export default App;
+const mapStateToProps = state => ({
+  login: state.users.login
+});
+
+export default connect(mapStateToProps)(App);
