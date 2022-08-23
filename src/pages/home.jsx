@@ -4,7 +4,7 @@ import { getPosts, getPostByTag } from "../actions/posts";
 import DefaultLayout from "../components/default";
 import Post from "../components/post";
 
-function Home({ getPosts, getPostByTag, posts }) {
+function HomePage({ getPosts, getPostByTag, posts }) {
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -58,4 +58,4 @@ const mapDispatchToProps = (dispatch) => ({
     getPostByTag: (filter) => dispatch(getPostByTag(filter))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

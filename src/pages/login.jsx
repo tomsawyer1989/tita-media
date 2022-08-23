@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import FacebookLogin from 'react-facebook-login';
 import { loginUser } from "../actions/users";
 
-function Login({ loginUser, login }) {
+function LoginPage({ loginUser, login }) {
 
     const navigate = useNavigate();
 
@@ -60,4 +60,4 @@ const mapDispatchToProps = (dispatch) => ({
     loginUser: (data) => dispatch(loginUser(data))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

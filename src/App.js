@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import Login from "./pages/login";
-import Home from './pages/home';
+import LoginPage from "./pages/login";
+import HomePage from './pages/home';
 
 function RequireAuth({ children, login }) {
   let location = useLocation();
@@ -17,12 +17,12 @@ function App({ login }) {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route
           path="/home"
           element={
             <RequireAuth login={ login }>
-              <Home />
+              <HomePage />
             </RequireAuth>
           }
         />
