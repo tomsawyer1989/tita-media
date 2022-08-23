@@ -125,7 +125,7 @@ const styles = {
         height: '470px',
         width: '500px',
         padding: '15px',
-        marginTop: '20px',
+        marginBottom: '20px',
         color: 'white',
         borderRadius: '15px',
         backgroundColor: '#1c1e21'

@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getPosts } from "../actions/posts";
 import DefaultLayout from "../components/default";
 import Post from "../components/post";
 
 function Home(props) {
+    const [ filter, setFilter ] = useState('');
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -17,6 +18,7 @@ function Home(props) {
     return(
         <DefaultLayout>
             <div style={ styles.container }>
+                <input style={ styles.input } type="text" placeholder="Search" onChange={(e) => setFilter(e.target.value)}/>
                 {props.posts.posts && props.posts.posts.data.map(item => (
                     <Post key={ item.id } item={ item } />
                 ))}
@@ -30,6 +32,13 @@ const styles = {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center'
+    },
+    input: {
+        padding: '7px',
+        marginBottom: '20px',
+        borderRadius: '15px',
+        color: 'white',
+        backgroundColor: '#444950'
     }
 }
 

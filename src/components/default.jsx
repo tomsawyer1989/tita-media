@@ -5,7 +5,7 @@ export default function DefaultLayout(props) {
     const { children } = props;
 
     return (
-        <div style={{ marginTop: '60px' }}>
+        <div style={{ marginTop: '80px' }}>
             <Header />
             { children }
         </div>
