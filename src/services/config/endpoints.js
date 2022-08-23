@@ -12,6 +12,5 @@ function serialize(obj) {
 }
 
 export const getPosts = () => `${ baseUrl }post`;
-export const getPostByTag = (id) => `${ baseUrl }tag/${ id }/post`;
 export const getCommentsByPost = (id) => `${ baseUrl }post/${ id }/comment`;
 export const getPostUser = (id) => `${ baseUrl }user/${ id }`;

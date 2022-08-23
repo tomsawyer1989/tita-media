@@ -3,8 +3,7 @@ import {
     GET_POSTS_SUCCESS,
     GET_POSTS_ERROR,
     GET_POST_BY_TAG_REQUESTED,
-    GET_POST_BY_TAG_SUCCESS,
-    GET_POST_BY_TAG_ERROR
+    GET_POST_BY_TAG_SUCCESS
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -12,8 +11,7 @@ const initialState = {
     posts: null,
     error: null,
     postByTagLoading: false,
-    postByTag: null,
-    postByTagError: null
+    postByTag: null
 };
 
 export const postsReducer = (state = initialState, action) => {
@@ -46,24 +44,15 @@ export const postsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 postByTagLoading: true,
-                postByTag: null,
-                postByTagError: null
+                postByTag: null
             };
         
         case GET_POST_BY_TAG_SUCCESS:
+            const filter = state.posts.data.filter(post => post.tags.some(tag => tag.toLowerCase().includes(action.payload.toLowerCase())));
             return {
                 ...state,
                 postByTagLoading: false,
-                postByTag: action.payload,
-                postByTagError: null
-            };
-
-        case GET_POST_BY_TAG_ERROR:
-            return {
-                ...state,
-                postByTagLoading: false,
-                postByTag: null,
-                postByTagError: action.payload
+                postByTag: action.payload !== '' ? filter : null
             };
         
         default:

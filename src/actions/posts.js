@@ -3,10 +3,9 @@ import {
     GET_POSTS_SUCCESS,
     GET_POSTS_ERROR,
     GET_POST_BY_TAG_REQUESTED,
-    GET_POST_BY_TAG_SUCCESS,
-    GET_POST_BY_TAG_ERROR
+    GET_POST_BY_TAG_SUCCESS
 } from "./actionTypes";
-import { fetchPosts, fetchPostByTag } from "../services/posts";
+import { fetchPosts } from "../services/posts";
 
 export const getPosts = () => async dispatch => {
     dispatch({
@@ -31,25 +30,12 @@ export const getPosts = () => async dispatch => {
     }
 }
 
-export const getPostByTag = (id) => async dispatch => {
+export const getPostByTag = (filter) => async dispatch => {
     dispatch({
         type: GET_POST_BY_TAG_REQUESTED,
     });
-
-    try {
-        const response = await fetchPostByTag(id);
-
-        dispatch({
-            type: GET_POST_BY_TAG_SUCCESS,
-            payload: response,
-        });
-        return response;
-    }
-    catch (err) {
-        dispatch({
-            type: GET_POST_BY_TAG_ERROR,
-            payload: 'Server failure',
-        });
-        throw err;
-    }
+    dispatch({
+        type: GET_POST_BY_TAG_SUCCESS,
+        payload: filter
+    });
 }

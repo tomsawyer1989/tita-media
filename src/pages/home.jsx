@@ -1,25 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { getPosts } from "../actions/posts";
+import { getPosts, getPostByTag } from "../actions/posts";
 import DefaultLayout from "../components/default";
 import Post from "../components/post";
 
-function Home(props) {
-    const [ filter, setFilter ] = useState('');
+function Home({ getPosts, getPostByTag, posts }) {
 
     useEffect(() => {
         const fetchPosts = async () => {
-            await props.getPosts();
+            await getPosts();
         }
 
         fetchPosts();
     }, []);
-    
+
+    const filterPostByTag = async (e) => {
+        await getPostByTag(e.target.value);
+    }
+
     return(
         <DefaultLayout>
             <div style={ styles.container }>
-                <input style={ styles.input } type="text" placeholder="Search" onChange={(e) => setFilter(e.target.value)}/>
-                {props.posts.posts && props.posts.posts.data.map(item => (
+                <input style={ styles.input } type="text" placeholder="Search post by tag" onChange={filterPostByTag}/>
+                {posts.postByTag ? posts.postByTag.map(item => (
+                    <Post key={ item.id } item={ item } />
+                ))
+                :
+                posts.posts && posts.posts.data.map(item => (
                     <Post key={ item.id } item={ item } />
                 ))}
             </div>
@@ -47,7 +54,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    getPosts: () => dispatch(getPosts())
+    getPosts: () => dispatch(getPosts()),
+    getPostByTag: (filter) => dispatch(getPostByTag(filter))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
