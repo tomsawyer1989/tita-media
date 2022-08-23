@@ -22,7 +22,7 @@ function LoginPage({ loginUser, login }) {
         <div style={ styles.container }>
             <div style={ styles.loginContainer }>
                 {!login && <FacebookLogin
-                    appId="305279827571865"
+                    appId={`${ process.env.REACT_APP_FACEBOOK_API }`}
                     autoLoad={ true }
                     fields="name,email,picture"
                     scope="public_profile,user_friends"

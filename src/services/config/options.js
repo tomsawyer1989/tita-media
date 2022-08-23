@@ -3,7 +3,7 @@ const headers = jwt => {
     return {
         'Content-Type': 'application/json',
         Authorization: jwt ? `Bearer ${session.jwt}` : null,
-        'app-id': '6301b76bbfc6129df3304440'
+        'app-id': `${ process.env.REACT_APP_DUMMY_API }`
     }
 }
 
