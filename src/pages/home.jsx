@@ -21,10 +21,10 @@ function HomePage({ getPosts, getPostByTag, posts }) {
     return(
         <DefaultLayout>
             <div style={ styles.container }>
-                <input style={ styles.input } type="text" placeholder="Search post by tag" onChange={filterPostByTag}/>
-                {posts.postByTag ? posts.postByTag.map(item => (
+                <input style={ styles.input } type="text" placeholder="Search posts by tag" onChange={filterPostByTag}/>
+                {posts.postByTag ? (posts.postByTag.length !== 0 ? posts.postByTag.map(item => (
                     <Post key={ item.id } item={ item } />
-                ))
+                )) : <p style={{ color: 'white' }}>No search results</p>)
                 :
                 posts.posts && posts.posts.data.map(item => (
                     <Post key={ item.id } item={ item } />
