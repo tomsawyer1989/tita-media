@@ -1,13 +1,17 @@
 import React from 'react';
 import { connect } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 import FacebookLogin from 'react-facebook-login';
 import { loginUser } from "../actions/users";
 
 function Login({ loginUser, login }) {
 
-    const responseFacebook = (response) => {
+    const navigate = useNavigate();
+
+    const responseFacebook = async (response) => {
         if (response.accessToken) {
-            loginUser(response);
+            await loginUser(response);
+            navigate('/home', { replace: true });
         }
         else {
             loginUser(null);
@@ -15,22 +19,37 @@ function Login({ loginUser, login }) {
     }
 
     return (
-        <div>
-            <div>
-                <div>
-                    {!login && <FacebookLogin
-                        appId="305279827571865"
-                        autoLoad={ true }
-                        fields="name,email,picture"
-                        scope="public_profile,user_friends"
-                        callback={ responseFacebook }
-                        icon="fa-facebook"
-                    />}
-                </div>
-                {login && <div><p>Logged in !!!</p></div>}
+        <div style={ styles.container }>
+            <div style={ styles.loginContainer }>
+                {!login && <FacebookLogin
+                    appId="305279827571865"
+                    autoLoad={ true }
+                    fields="name,email,picture"
+                    scope="public_profile,user_friends"
+                    callback={ responseFacebook }
+                    icon="fa-facebook"
+                />}
             </div>
         </div>
     );
+}
+
+const styles = {
+    container: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh'
+    },
+    loginContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '400px',
+        height: '300px',
+        borderRadius: '15px',
+        backgroundColor: '#1c1e21'
+    }
 }
 
 const mapStateToProps = state => ({

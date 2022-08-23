@@ -1,24 +1,31 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Login from "../pages/login";
 import Home from '../pages/home';
 
+function RequireAuth({ children, login }) {
+    let location = useLocation();
+
+    if (!login) {
+      return <Navigate to="/login" state={{ from: location }} replace />;
+    }
+
+    return children;
+}
+
 function Main({ login }) {
-
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        if (login) {
-            console.log(login)
-            navigate('/home');
-        }
-    }, [login]);
-
     return(
         <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/home" element={login ? <Home /> : <Navigate to="/" />} />
+            <Route path="/login" element={<Login />} />
+            <Route
+                path="/home"
+                element={
+                    <RequireAuth login={ login }>
+                        <Home />
+                    </RequireAuth>
+                }
+            />
         </Routes>
     );
 }
