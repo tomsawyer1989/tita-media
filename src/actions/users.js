@@ -33,9 +33,19 @@ export const logoutUser = () => async dispatch => {
     dispatch({
         type: LOGOUT_REQUESTED,
     });
-    dispatch({
-        type: LOGOUT_SUCCESS,
-    });
+
+    try {
+        await window.FB.api('/me/permissions', 'delete', null, () => window.FB.logout());
+        localStorage.clear();
+        sessionStorage.clear();
+
+        dispatch({
+            type: LOGOUT_SUCCESS,
+        });
+    }
+    catch (err) {
+        throw err;
+    }
 }
 
 export const getPostUser = (id) => async dispatch => {
