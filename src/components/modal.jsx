@@ -34,7 +34,8 @@ const styles = {
         backgroundColor: 'rgba(0, 0, 0, 0.5)'
     },
     content: {
-        width: '500px',
+        width: '100%',
+        maxWidth: '500px',
         height: '420px',
         padding: '10px 15px',
         borderRadius: '15px',

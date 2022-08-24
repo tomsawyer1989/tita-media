@@ -36,9 +36,7 @@ function HomePage({ getPosts, getPostByTag, posts }) {
 
 const styles = {
     container: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center'
+        textAlign: 'center'
     },
     input: {
         padding: '7px',

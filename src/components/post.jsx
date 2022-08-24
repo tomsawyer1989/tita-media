@@ -123,7 +123,9 @@ function Post({ item, getPostUser, getCommentsByPost }) {
 const styles = {
     container: {
         height: '470px',
-        width: '500px',
+        width: '100%',
+        maxWidth: '500px',
+        margin: 'auto',
         padding: '15px',
         marginBottom: '20px',
         color: 'white',
