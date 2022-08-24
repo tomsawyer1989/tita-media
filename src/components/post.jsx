@@ -79,26 +79,24 @@ function Post({ item, getPostUser, getCommentsByPost }) {
         </div>
         {owner && <Modal show={ showOwner } onClose={() => setShowOwner(false)} title={ title }>
             <div style={ styles.ownerContainer }>
-                <div>
+                <div style={{ width: '50%', paddingRight: '15px', paddingLeft: '15px' }}>
                     <img style={ styles.ownerPicture } src={ owner.picture } alt="owner"/>
-                    <div style={{ display: 'flex', justifyContent: 'center' }}>
-                        <ul style={{ padding: '0px', margin: '0px' }}>
-                            <li style={{ listStyleType: 'none' }}>{ owner.email }</li>
-                            <li style={{ listStyleType: 'none' }}>{ owner.location.street }</li>
-                            <li style={{ listStyleType: 'none' }}>{ owner.location.city } - { owner.location.state }</li>
-                            <li style={{ listStyleType: 'none' }}>{ owner.location.country }</li>
-                        </ul>
-                    </div>
+                    <ul style={{ padding: '0px', margin: '0px', wordWrap: 'break-word' }}>
+                        <li style={{ listStyleType: 'none' }}>{ owner.email }</li>
+                        <li style={{ listStyleType: 'none' }}>{ owner.location.street }</li>
+                        <li style={{ listStyleType: 'none' }}>{ owner.location.city } - { owner.location.state }</li>
+                        <li style={{ listStyleType: 'none' }}>{ owner.location.country }</li>
+                    </ul>
                 </div>
-                <div>
-                    <ul style={{ padding: '0px', margin: '0px' }}>
-                        <li style={{ listStyleType: 'none' }}><strong>title: </strong>{ owner.title }</li>
-                        <li style={{ listStyleType: 'none' }}><strong>gender: </strong>{ owner.gender }</li>
-                        <li style={{ listStyleType: 'none' }}><strong>phone: </strong>{ owner.phone }</li>
-                        <li style={{ listStyleType: 'none' }}><strong>date of birth: </strong>{ owner.dateOfBirth.split('T')[0] }</li>
-                        <li style={{ listStyleType: 'none' }}><strong>register date: </strong>{ owner.registerDate.split('T')[0] }</li>
-                        <li style={{ listStyleType: 'none' }}><strong>updated date: </strong>{ owner.updatedDate.split('T')[0] }</li>
-                        <li style={{ listStyleType: 'none' }}><strong>time zone: </strong>{ owner.location.timezone }</li>
+                <div style={{ width: '50%' }}>
+                    <ul style={{ padding: '0px', margin: '0px', wordWrap: 'break-word' }}>
+                        <li style={{ listStyleType: 'none' }}><strong>Title: </strong>{ owner.title }</li>
+                        <li style={{ listStyleType: 'none' }}><strong>Gender: </strong>{ owner.gender }</li>
+                        <li style={{ listStyleType: 'none' }}><strong>Phone: </strong>{ owner.phone }</li>
+                        <li style={{ listStyleType: 'none' }}><strong>Date of birth: </strong>{ owner.dateOfBirth.split('T')[0] }</li>
+                        <li style={{ listStyleType: 'none' }}><strong>Register date: </strong>{ owner.registerDate.split('T')[0] }</li>
+                        <li style={{ listStyleType: 'none' }}><strong>Updated date: </strong>{ owner.updatedDate.split('T')[0] }</li>
+                        <li style={{ listStyleType: 'none' }}><strong>Time zone: </strong>{ owner.location.timezone }</li>
                     </ul>
                 </div>
             </div>
@@ -162,12 +160,10 @@ const styles = {
     },
     ownerContainer: {
         display: 'flex',
-        justifyContent: 'space-around',
         paddingTop: '20px'
     },
     ownerPicture: {
-        width: '230px',
-        height: '230px',
+        width: '85%',
         borderRadius: '120px'
     },
     commentsContainer: {
