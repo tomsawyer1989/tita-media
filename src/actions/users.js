@@ -2,6 +2,8 @@ import {
     LOGIN_REQUESTED,
     LOGIN_SUCCESS,
     LOGIN_ERROR,
+    LOGOUT_REQUESTED,
+    LOGOUT_SUCCESS,
     GET_POST_USER_REQUESTED,
     GET_POST_USER_SUCCESS,
     GET_POST_USER_ERROR
@@ -25,6 +27,15 @@ export const loginUser = (response) => async dispatch => {
             payload: 'login error',
         });
     }
+}
+
+export const logoutUser = () => async dispatch => {
+    dispatch({
+        type: LOGOUT_REQUESTED,
+    });
+    dispatch({
+        type: LOGOUT_SUCCESS,
+    });
 }
 
 export const getPostUser = (id) => async dispatch => {

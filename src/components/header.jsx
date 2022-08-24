@@ -1,7 +1,13 @@
 import React from 'react';
 import { connect } from "react-redux";
+import { logoutUser } from "../actions/users";
 
-function Header({ user }) {
+function Header({ user, logoutUser }) {
+
+    const logout = async () => {
+        await logoutUser();
+    }
+
     return (
         <div style={ styles.container }>
             <div style={ styles.userContainer }>
@@ -10,6 +16,7 @@ function Header({ user }) {
                     <div><strong>{ user.name }</strong></div>
                     <div style={{ textAlign: 'center' }}><small>{ user.email }</small></div>
                 </div>
+                <button style={ styles.logout } onClick={() => logout()}>Logout</button>
             </div>
         </div>
     );
@@ -39,7 +46,17 @@ const styles = {
     },
     userInfo: {
         padding: '7px',
+        marginRight: '10px',
         borderRadius: '15px',
+        backgroundColor: '#18191A'
+    },
+    logout: {
+        cursor: 'pointer',
+        padding: '15px',
+        border: 'none',
+        height: '60px',
+        color: 'white',
+        borderRadius: '10px 0px 0px 10px',
         backgroundColor: '#18191A'
     }
 }
@@ -48,4 +65,8 @@ const mapStateToProps = state => ({
     user: state.users.user
 });
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = (dispatch) => ({
+    logoutUser: () => dispatch(logoutUser())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

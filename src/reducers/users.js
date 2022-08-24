@@ -2,6 +2,8 @@ import {
     LOGIN_REQUESTED,
     LOGIN_SUCCESS,
     LOGIN_ERROR,
+    LOGOUT_REQUESTED,
+    LOGOUT_SUCCESS,
     GET_POST_USER_REQUESTED,
     GET_POST_USER_SUCCESS,
     GET_POST_USER_ERROR
@@ -44,6 +46,22 @@ export const usersReducer = (state = initialState, action) => {
                 login: false,
                 user: null,
                 error: action.payload
+            };
+
+        case LOGOUT_REQUESTED:
+            return {
+                ...state,
+                loginLoading: true,
+                login: true
+            };
+        
+        case LOGOUT_SUCCESS:
+            return {
+                ...state,
+                loginLoading: false,
+                login: false,
+                user: null,
+                error: null
             };
         
         case GET_POST_USER_REQUESTED:
