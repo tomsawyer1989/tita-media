@@ -36,11 +36,14 @@ function HomePage({ getPosts, getPostByTag, posts }) {
 
 const styles = {
     container: {
-        textAlign: 'center'
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: '15px'
     },
     input: {
         padding: '7px',
-        marginBottom: '20px',
+        marginBottom: '15px',
         borderRadius: '15px',
         color: 'white',
         backgroundColor: '#444950'
